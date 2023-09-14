@@ -21,7 +21,7 @@ import {IoPlayBackSharp,IoPlayForwardSharp} from 'react-icons/io5'
   {
     name:'IDFC - Blackbear',
     artist:'Unknown',
-    img:'ronaldo.jpeg',
+    img:'unnamed.png',
     src:'IDFC - Blackbear'
   },
   {

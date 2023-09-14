@@ -152,7 +152,7 @@ function App() {
     </div>
      
     <div className='flex image w-[290px] bg-slate-950  pb-9 px-3 items-center flex-col'>
-     <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] object-cover border-gray-400 h-[170px] border-4`} src={`./src/assets/${musiclist[loadmusic].img}`} alt="image" />
+     <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] object-cover border-gray-400 h-[170px] border-4`} src={`./assets/${musiclist[loadmusic].img}`} alt="image" />
 
      <div className=' flex flex-col mt-2 bg- items-center'>
       <p className='text-white text-lg '>{musiclist[loadmusic].name}</p>

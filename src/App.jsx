@@ -21,7 +21,7 @@ import {IoPlayBackSharp,IoPlayForwardSharp} from 'react-icons/io5'
   {
     name:'IDFC - Blackbear',
     artist:'Unknown',
-    img:'unnamed.png',
+    img:'ronaldo.jpeg',
     src:'IDFC - Blackbear'
   },
   {
@@ -59,7 +59,11 @@ function App() {
   const [barwidth, setbarwidth] = useState(0)
   const [repeatbool,setrepeatbool]=useState(true)
   const [shufflebool,setshufflebool]=useState(true)
+ 
 
+  useEffect(()=>{
+  document.documentElement.style.setProperty('--s',`url('/src/assets/${musiclist[loadmusic].img}')`)
+  },[loadmusic])
 
   const audio = useRef()
 
@@ -141,7 +145,6 @@ function App() {
 
   
   
-  document.documentElement.style.setProperty('--s',`url('src/assets/${musiclist[loadmusic].img}')`)
   return ( 
   <div className='box flex flex-col relative rounded-3xl overflow-hidden'>
 
@@ -208,3 +211,4 @@ function App() {
 }
 
 export default App
+

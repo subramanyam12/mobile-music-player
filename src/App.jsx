@@ -194,7 +194,7 @@ function App() {
       {musiclist.map((item,i)=>(
         <li onClick={()=>menuload(i)} className={`flex mb-2 ${loadmusic ===i ? 'bg-gray-400' : 'bg-gray-300'} cursor-pointer text-black p-2 pb-1 rounded-xl justify-between items-center`} key={item.name}>
           <div className='flex gap-2'>
-           <img className='w-10 rounded-full h-10 object-cover' src={`src/assets/${item.img}`} />
+           <img className='w-10 rounded-full h-10 object-cover' src={`./assets/${item.img}`} />
             <div>
              <p className='text-sm font-medium'>{item.name.length<=23 ? item.name :item.name.slice(0,23)+'...' }</p>
              <span className='text-xs'>{item.artist}</span>

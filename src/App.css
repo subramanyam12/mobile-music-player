@@ -1,9 +1,16 @@
 body{
  display:flex;
  align-items:center;
- justify-content: center;  
+ justify-content: center;
  height: 100vh; 
  background: rgba(128, 128, 128, 0.904);
+}
+
+@media screen and (max-width:650px)  {
+  body{
+    display: block;
+    height: max-content;
+  }
 }
 :root{
   --s:url('');

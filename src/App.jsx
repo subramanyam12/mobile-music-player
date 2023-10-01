@@ -147,21 +147,21 @@ function App() {
   return ( 
   <div className='box flex flex-col relative rounded-3xl overflow-hidden'>
 
-    <div className='flex bg-gray-700 pb-3 pt-5 px-2 text-white items-center justify-between'>
-    { menubool ? <HiMenuAlt1 onClick={()=>setmenubool(!menubool)} className='text-2xl cursor-pointer' />:<FaChevronLeft onClick={()=>setmenubool(!menubool)} className='text-xl cursor-pointer' />}
-      <h6 className='text-[#ffffffdc] font-medium bol text-[17px]'>{menubool ?'Now Playing':'Songs List'}</h6>
-      <BsSearch />
+    <div className='flex bg-gray-700 pb-3 pt-5 max-sm:py-6 px-2 text-white items-center justify-between'>
+    { menubool ? <HiMenuAlt1 onClick={()=>setmenubool(!menubool)} className='text-2xl max-sm:text-3xl cursor-pointer' />:<FaChevronLeft onClick={()=>setmenubool(!menubool)} className='text-xl max-sm:text-3xl cursor-pointer' />}
+      <h6 className='text-[#ffffffdc] font-medium bol text-[17px] max-sm:text-xl'>{menubool ?'Now Playing':'Songs List'}</h6>
+      <BsSearch className='max-sm:text-xl' />
     </div>
      
-    <div className='flex image w-[290px] bg-slate-950  pb-9 px-3 items-center flex-col'>
-     <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] object-cover border-gray-400 h-[170px] border-4`} src={`./assets/${musiclist[loadmusic].img}`} alt="image" />
+    <div className='flex image w-[290px] max-sm:w-[100vw] max-sm:pt-14 max-sm:h-[84vh] bg-slate-950  pb-9 px-3 items-center flex-col'>
+     <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] max-sm:w-[240px] object-cover border-gray-400 h-[170px] max-sm:h-[240px] border-4`} src={`./assets/${musiclist[loadmusic].img}`} alt="image" />
 
-     <div className=' flex flex-col mt-2 bg- items-center'>
-      <p className='text-white text-lg '>{musiclist[loadmusic].name}</p>
-      <span className='text-gray-400 text-sm '>{musiclist[loadmusic].artist}</span>
+     <div className=' flex flex-col mt-2 max-sm:mt-10 bg- items-center'>
+      <p className='text-white text-lg max-sm:text-2xl '>{musiclist[loadmusic].name}</p>
+      <span className='text-gray-400 text-sm max-sm:text-lg '>{musiclist[loadmusic].artist}</span>
      </div>
      
-     <div className=' flex z-10 justify-between text-gray-400 text-[11px] font-bold  mt-8 w-full'>
+     <div className=' flex z-10 justify-between max-sm:text-sm text-gray-400 text-[11px] font-bold  mt-8 w-full'>
       <p className=' border-[1px] rounded-full px-1 py-[1px] border-white '>{currenttime}</p>
       <span className='border-[1px] rounded-full px-1 py-[1px] border-white '>{durationtime}</span>
      </div>
@@ -169,19 +169,19 @@ function App() {
     {/* <div className='w-full z-20 h-[5px] mt-3 cursor-pointer rounded-full bg-white' onClick={sliderbar}>
     <div style={{width:`${barwidth}%`}} className=' z-10 relative h-full slider bg-blue-400' ></div>
     </div> */}
-     <input type="range" className='w-full z-10 h-1 mt-3 outline-none rounded-full bg-blue-400' onChange={progressbar} value={barwidth}  />
-     <div className='text-white w-full z-10 flex mt-8 text-2xl items-center justify-between'> 
+     <input type="range" className='w-full z-10 h-1 mt-3 max-sm:mt-5 outline-none rounded-full bg-blue-400' onChange={progressbar} value={barwidth}  />
+     <div className='text-white w-full z-10 flex mt-8 text-2xl max-sm:text-3xl items-center justify-between'> 
   
 
-        { repeatbool ? <GrRotateRight onClick={()=>setrepeatbool(!repeatbool)} />:<FaArrowsRotate className='text-2xl' onClick={()=>setrepeatbool(!repeatbool)} />}          
+        { repeatbool ? <GrRotateRight onClick={()=>setrepeatbool(!repeatbool)} />:<FaArrowsRotate onClick={()=>setrepeatbool(!repeatbool)} />}          
                 
         <div className='text-white flex items-center gap-5'>
-          <IoPlayBackSharp onClick={playback} className='text-[26px]' />
+          <IoPlayBackSharp onClick={playback} className='text-[26px] max-sm:text-4xl' />
 
           <audio ref={audio} onTimeUpdate={audiotime} onEnded={afterend} src={`./assets/${musiclist[loadmusic].src}.mp3`}></audio>
 
-          { playbool ? <BsPlayCircle onClick={playclick} className='play text-[45px]' />:<BsPauseCircle onClick={playclick} className='text-[45px]' />}          
-          <IoPlayForwardSharp onClick={playforward} className='text-[26px]' />
+          { playbool ? <BsPlayCircle onClick={playclick} className='play text-[45px] max-sm:text-[55px]' />:<BsPauseCircle onClick={playclick} className='text-[45px] max-sm:text-[55px]' />}          
+          <IoPlayForwardSharp onClick={playforward} className='text-[26px] max-sm:text-4xl' />
         </div>
        { shufflebool ? <PiShuffleAngularFill onClick={shuffle} />:<MdShuffleOn onClick={shuffle}  />}          
 
@@ -191,12 +191,12 @@ function App() {
       <ul className={`absolute unorder z-10 ${menubool ?'hidden' :"block"} w-full h-[45%] overflow-y-auto scrolling-touch p-3 pb-1 bg-gray-500 bottom-0`}>
       
       {musiclist.map((item,i)=>(
-        <li onClick={()=>menuload(i)} className={`flex mb-2 ${loadmusic ===i ? 'bg-gray-400' : 'bg-gray-300'} cursor-pointer text-black p-2 pb-1 rounded-xl justify-between items-center`} key={item.name}>
+        <li onClick={()=>menuload(i)} className={`flex mb-2 ${loadmusic ===i ? 'bg-gray-400' : 'bg-gray-300'} cursor-pointer text-black p-2 pb-1 max-sm:p-3 rounded-xl justify-between items-center`} key={item.name}>
           <div className='flex gap-2'>
-           <img className='w-10 rounded-full h-10 object-cover' src={`./assets/${item.img}`} />
+           <img className='w-12 rounded-full h-10 max-sm:h-12 object-cover' src={`./assets/${item.img}`} />
             <div>
-             <p className='text-sm font-medium'>{item.name.length<=23 ? item.name :item.name.slice(0,23)+'...' }</p>
-             <span className='text-xs'>{item.artist}</span>
+             <p className='text-sm max-sm:text-[17px] font-medium'>{item.name.length<=23 ? item.name :item.name.slice(0,23)+'...' }</p>
+             <span className='text-xs max-sm:text-sm'>{item.artist}</span>
             </div>
           </div>
           {loadmusic ===i &&<small><MusicAnime /></small>}

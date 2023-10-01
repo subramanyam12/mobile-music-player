@@ -62,7 +62,7 @@ function App() {
  
 
   useEffect(()=>{
-  document.documentElement.style.setProperty('--s',`url('./assets/${musiclist[loadmusic].img}')`)
+  document.documentElement.style.setProperty('--s',`url('./${musiclist[loadmusic].img}')`)
   },[loadmusic])
 
   const audio = useRef()

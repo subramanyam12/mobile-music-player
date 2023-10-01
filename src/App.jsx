@@ -153,7 +153,7 @@ function App() {
       <BsSearch className='max-sm:text-xl' />
     </div>
      
-    <div className='flex image w-[290px] max-sm:w-[100vw] max-sm:pt-14 max-sm:h-[84vh] bg-slate-950  pb-9 px-3 items-center flex-col'>
+    <div className='flex image w-[290px] max-sm:w-[100vw] max-sm:pt-14 max-sm:h-[100vh] bg-slate-950  pb-9 px-3 items-center flex-col'>
      <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] max-sm:w-[240px] object-cover border-gray-400 h-[170px] max-sm:h-[240px] border-4`} src={`./assets/${musiclist[loadmusic].img}`} alt="image" />
 
      <div className=' flex flex-col mt-2 max-sm:mt-10 bg- items-center'>

@@ -6,7 +6,7 @@ body{
  background: rgba(128, 128, 128, 0.904);
 }
 :root{
-  --s:url('src/assets/ronaldo.jpeg');
+  --s:url('./assets/ronaldo.jpeg');
 }
 
 .image{

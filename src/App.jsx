@@ -62,7 +62,7 @@ function App() {
  
 
   useEffect(()=>{
-  document.documentElement.style.setProperty('--s',`url('/src/assets/${musiclist[loadmusic].img}')`)
+  document.documentElement.style.setProperty('--s',`url('./src/assets/${musiclist[loadmusic].img}')`)
   },[loadmusic])
 
   const audio = useRef()
@@ -155,7 +155,7 @@ function App() {
     </div>
      
     <div className='flex image w-[290px] bg-slate-950  pb-9 px-3 items-center flex-col'>
-     <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] object-cover border-gray-400 h-[170px] border-4`} src={`src/assets/${musiclist[loadmusic].img}`} alt="image" />
+     <img  className={`rounded-full ${!playbool && 'animate-pulse border-gray-300'} z-10 mt-16 w-[170px] object-cover border-gray-400 h-[170px] border-4`} src={`./src/assets/${musiclist[loadmusic].img}`} alt="image" />
 
      <div className=' flex flex-col mt-2 bg- items-center'>
       <p className='text-white text-lg '>{musiclist[loadmusic].name}</p>
@@ -179,7 +179,7 @@ function App() {
         <div className='text-white flex items-center gap-5'>
           <IoPlayBackSharp onClick={playback} className='text-[26px]' />
 
-          <audio ref={audio} onTimeUpdate={audiotime} onEnded={afterend} src={`src/assets/${musiclist[loadmusic].src}.mp3`}></audio>
+          <audio ref={audio} onTimeUpdate={audiotime} onEnded={afterend} src={`./src/assets/${musiclist[loadmusic].src}.mp3`}></audio>
 
           { playbool ? <BsPlayCircle onClick={playclick} className='play text-[45px]' />:<BsPauseCircle onClick={playclick} className='text-[45px]' />}          
           <IoPlayForwardSharp onClick={playforward} className='text-[26px]' />

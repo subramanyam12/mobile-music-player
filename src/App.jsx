@@ -144,7 +144,6 @@ function App() {
   }
 
   
-  
   return ( 
   <div className='box flex flex-col relative rounded-3xl overflow-hidden'>
 

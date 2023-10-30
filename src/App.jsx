@@ -195,7 +195,7 @@ function App() {
           <div className='flex gap-2'>
            <img className='w-12 rounded-full h-10 max-sm:h-12 object-cover' src={`./assets/${item.img}`} />
             <div>
-             <p className='text-sm max-sm:text-[17px] font-medium'>{item.name.length<=23 ? item.name :item.name.slice(0,23)+'...' }</p>
+             <p className='text-sm max-sm:text-[17px] font-medium'>{item.name.length<=20 ? item.name :item.name.slice(0,20)+'...' }</p>
              <span className='text-xs max-sm:text-sm'>{item.artist}</span>
             </div>
           </div>

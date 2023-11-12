@@ -77,12 +77,7 @@ function App() {
     }
   }
 
-  const durationupdate=()=>{
-    let minutes=parseInt(audio.current.duration / 60);
-    let seconds=parseInt(audio.current.duration % 60);
-    setdurationtime(`${minutes<10 ? `0${minutes}`:minutes}:${seconds<10 ? `0${seconds}`:seconds}`)
-    
-  }
+ 
  
 
   const playback=()=>{
@@ -103,25 +98,27 @@ function App() {
     setTimeout(()=>playbool ?audio.current.pause() : audio.current.play())
   }
 
+  const aftermusicload =()=>{
+    let minutes=parseInt(audio.current.duration / 60);
+    let seconds=parseInt(audio.current.duration % 60);
+    setdurationtime(`${minutes<10 ? `0${minutes}`:minutes}:${seconds<10 ? `0${seconds}`:seconds}`)
+  }
+
   const audiotime=()=>{
-    durationupdate()
     let mins=Math.floor(audio.current.currentTime/60);
     let secs=Math.floor(audio.current.currentTime%60);
     setcurrenttime(`${mins<10 ? `0${mins}`:mins}:${secs<10 ? `0${secs}`:secs}`)
-    let barwid=parseInt(audio.current.currentTime/audio.current.duration *100)
+    let barwid=(audio.current.currentTime/audio.current.duration) *100
     setbarwidth(barwid);
   }
 
-  const progressbar=(e)=>{
-    setbarwidth(e.target.value);
-    audio.current.currentTime=e.target.value * audio.current.duration / 100;
-  }
 
-  // const sliderbar=(e)=>{
-  //   let tot=e.target.clientWidth;
-  //   let offset=e.nativeEvent.offsetX;
-  //   audio.current.currentTime=(offset/tot) * audio.current.duration;
-  // }
+  const sliderbar=(e)=>{
+    let changewidth = e.nativeEvent.offsetX/e.target.clientWidth;
+    setbarwidth(changewidth * 100);
+    console.log(changewidth);
+    audio.current.currentTime=changewidth * audio.current.duration;
+  }
 
   const afterend =()=>{
     if(repeatbool){
@@ -166,10 +163,9 @@ function App() {
       <span className='border-[1px] rounded-full px-1 py-[1px] border-white '>{durationtime}</span>
      </div>
     
-    {/* <div className='w-full z-20 h-[5px] mt-3 cursor-pointer rounded-full bg-white' onClick={sliderbar}>
-    <div style={{width:`${barwidth}%`}} className=' z-10 relative h-full slider bg-blue-400' ></div>
-    </div> */}
-     <input type="range" className='w-full z-10 h-1 mt-3 max-sm:mt-5 outline-none rounded-full bg-blue-400' onChange={progressbar} value={barwidth}  />
+    <div onClick={sliderbar} className='w-full z-10 h-[5px] mt-3 cursor-pointer rounded-full bg-white' >
+        <div style={{width:`${barwidth}%`,transition:'width 100ms linear'}} className=' z-10 relative h-full slider bg-blue-400' ></div>
+    </div>
      <div className='text-white w-full z-10 flex mt-8 text-2xl max-sm:text-3xl items-center justify-between'> 
   
 
@@ -178,7 +174,7 @@ function App() {
         <div className='text-white flex items-center gap-5'>
           <IoPlayBackSharp onClick={playback} className='text-[26px] max-sm:text-4xl' />
 
-          <audio ref={audio} onTimeUpdate={audiotime} onEnded={afterend} src={`./assets/${musiclist[loadmusic].src}.mp3`}></audio>
+          <audio ref={audio} onTimeUpdate={audiotime} onEnded={afterend} onLoadedData={aftermusicload} src={`./assets/${musiclist[loadmusic].src}.mp3`}></audio>
 
           { playbool ? <BsPlayCircle onClick={playclick} className='play text-[45px] max-sm:text-[55px]' />:<BsPauseCircle onClick={playclick} className='text-[45px] max-sm:text-[55px]' />}          
           <IoPlayForwardSharp onClick={playforward} className='text-[26px] max-sm:text-4xl' />
